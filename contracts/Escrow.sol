@@ -1,12 +1,8 @@
 //SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.17;
 
 interface IERC721 {
-    function transferFrom(
-        address _from,
-        address _to,
-        uint256 _id
-    ) external;
+    function transferFrom(address _from, address _to, uint256 _id) external;
 }
 
 contract Escrow {
@@ -70,10 +66,10 @@ contract Escrow {
     }
 
     // Update Inspection Status (only inspector)
-    function updateInspectionStatus(uint256 _nftID, bool _passed)
-        public
-        onlyInspector
-    {
+    function updateInspectionStatus(
+        uint256 _nftID,
+        bool _passed
+    ) public onlyInspector {
         inspectionPassed[_nftID] = _passed;
     }
 

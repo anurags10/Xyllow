@@ -21,11 +21,26 @@ async function main() {
 
   console.log(`Deployed Real Estate Contract at: ${realEstate.address}`)
   console.log(`Minting 3 properties...\n`)
+  // const transaction = await realEstate.connect(seller).mint(`https://bafybeicypyf4ba2wlksjlzqktb7rix44kbt7s7laifay67kdp25sfyxyji.ipfs.w3s.link/3.json`)
+  // await transaction.wait()
+  // console.log(transaction);
 
   for (let i = 0; i < 3; i++) {
-    const transaction = await realEstate.connect(seller).mint(`https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/${i + 1}.json`)
+    const transaction = await realEstate.connect(seller).mint(`https://bafybeiaasw77a2r3jj7i5zetcdnu4o2du7w3geu3xj5ibcf2woz2tqvzku.ipfs.w3s.link/${i + 1}.json`)
     await transaction.wait()
+    // console.log(transaction);
   }
+  // console.log(await realEstate.totalSupply());
+  // const totalSupply = await realEstate.totalSupply()
+  // for (var i = 1; i <= totalSupply; i++) {
+  //   const uri = await realEstate.tokenURI(i)
+  //   console.log(uri);
+  //   const response = await fetch(uri)
+  //   const metadata = await response.json()
+  //   console.log(metadata);
+    // homes.push(metadata)
+    // console.log(homes[i]);
+  // }
 
   // Deploy Escrow
   const Escrow = await ethers.getContractFactory('Escrow')

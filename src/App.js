@@ -30,6 +30,7 @@ function App() {
 
     const realEstate = new ethers.Contract(config[network.chainId].realEstate.address, RealEstate, provider)
     const totalSupply = await realEstate.totalSupply()
+    console.log(totalSupply.toString());
     const homes = []
 
     for (var i = 1; i <= totalSupply; i++) {
